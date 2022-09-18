@@ -1,0 +1,155 @@
+
+//Image Sizes 
+$image-size:(
+  full: 100%,
+  xxl: 1080px,
+  xl:920px,
+  l: 720px,
+  m: 500px,
+  s: 420px,
+  xs: 320px,
+  xxs: 100px
+);
+
+//Difrrent Screen Sizes 
+$screensizes:(
+  xs: 320px,
+  sm: 480px,
+  med: 768px,
+  lg: 1024px,
+  xl: 1200px 
+);
+//Default Colors 
+$colors:(
+    black: rgb(34, 33, 33),
+    white:rgb(217, 210, 210),
+    red:#c90000,
+    green: #3dcb16,
+    blue:#0909b9,
+    orange: rgb(255, 99, 2),
+    yellow: rgb(231, 227, 17),
+    purple: rgb(166, 7, 158)
+    );
+
+// Default Field's 
+$font-color: #fff;
+$background-color: rgb(22, 22, 22);
+$primary-color: map-get($colors, "blue");
+$secondary-color: #1a1a97;
+$primary-baackground: map-get($colors, "blue");
+$secondary-background: #1a1a97;
+$font-family: Arial, Helvetica, sans-serif;
+
+// Control the width very quickly 
+@mixin width-Tool($width,$min-width)
+{
+    width: $width;
+    min-width: $min-width;
+}
+
+@mixin createColumn($width)
+{
+    width: $width;
+    margin: 0 15px 30px; 
+    box-sizing: border-box;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+}
+
+
+@mixin flex-grid($numofcol) 
+{
+   
+    .row, .row-primary, .row-secondary
+    {
+        width: 100%;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        margin: 0 -15px;
+        padding-left: 1.5rem;
+        padding-left: 1.5rem;
+        
+
+        @include medium
+        {
+            display: block;
+            
+            
+
+        }
+
+    }
+
+    .row-primary
+    {
+        background: $primary-baackground;
+    }
+    .row-secondary
+    {
+        background: $secondary-background;
+    }
+
+    @for $col from 1 to $numofcol
+    {
+        $math: calc(100% / $col); 
+
+        .col-#{ $col } 
+        {
+            @include createColumn($math);
+
+            @include medium
+            {
+                display:block;
+                width: 100%;
+
+            }
+
+
+
+
+        }
+
+        
+
+
+    }
+
+ 
+
+
+   
+    
+}
+
+//SmallScreen
+@mixin small 
+{
+    @media(max-width: map-get($screensizes,sm) )
+    {
+        @content;
+    }
+}
+
+@mixin medium  
+{
+    @media(max-width: map-get($screensizes,med) )
+    {
+        @content;
+    }
+}
+@mixin large 
+{
+    @media(max-width: map-get($screensizes,lg) )
+    {
+        @content;
+    }
+}
+@mixin xl 
+{
+    @media(min-width: map-get($screensizes,xl) )
+    {
+        @content;
+    }
+}
+

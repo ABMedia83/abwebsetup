@@ -1,0 +1,21 @@
+@import "_pagesetup" ;
+@import "_utilities";
+
+//Setup default view 
+@include default-page($font-color,$background-color,$font-family,1.4rem);
+
+.layout-primary
+{
+    background: #1818b1;
+    @include container-setup(100%,1.4rem);
+}
+.layout-secondary
+{
+    background: #000080;
+    @include container-setup(100%,1.4rem);
+}
+
+@include flex-grid(13);
+
+
+
